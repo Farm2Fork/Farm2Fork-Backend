@@ -18,8 +18,21 @@ To get started with a Spring project, follow these steps:
 7. After the application has started successfully, open a web browser and visit `localhost:8080` to view the Spring application in action.
 
 ## Installed libraries
+- Thymeleaf: Template Engine
 
-## Seting up a view
+## Setting up a view
+To set up a view (static and non-static), follow these steps:
 1. Create `index.html` under `src/resources/static`.
 2. Add html elements in the file.
 3. Start the server and visit `localhost:8080` to see the static content.
+4. Use Thymeleaf by doing the following:
+     - Create a controller. Look up `@Contoller` and `@GetMapping`. `@GetMapping` as in HTTPGET method.
+     - Create a corresponding template and enable Thymeleaf.
+
+## Build and run the application
+To build and run the application, follow these steps:
+1. `./gradlew build`
+2. It will create `/build` directory where the files are stored.
+3. `cd` to `/build/libs`.
+4. Run the `.jar` file using `java -jar <FILENAME>.jar`.
+5. Run `./gradlew clean` to remove the `/build` directory.  If there is a problem with building the project, run `./gradlew clean build`.
