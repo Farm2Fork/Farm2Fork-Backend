@@ -36,3 +36,40 @@ To build and run the application, follow these steps:
 3. `cd` to `/build/libs`.
 4. Run the `.jar` file using `java -jar <FILENAME>.jar`.
 5. Run `./gradlew clean` to remove the `/build` directory.  If there is a problem with building the project, run `./gradlew clean build`.
+
+## Static contents
+By default, Spring boot serves static content from a directory called `/static` in the classpath or from the root of the `ServletContext`.
+1. Create an html file under `/resources/static`.
+2. Start the server and visit `localhost:8080/<FILENAME>.html`.
+3. Tomcat will let Spring know that there was a request to `localhost:8080/<FILENAME>.html`.
+4. Spring will look for the corresponding controller first.
+5. Spring will then look for it in `/static`.
+
+## Model, View, Controller
+Split Controller from View so that View can only focus on the view and Controller can focus on business logic and pass Model to the View.  #4 of 'Setting up a view' is how you go about doing it.  Look up `@RequestParam`.
+1. Tomcat will let Spring know that there was a request for `localhost:8080/mvc?name=Elliott`.
+2. Spring will search for the mvc controller.
+3. It will then pass the model (name: Elliott) and `return "mvc"` to viewResolver.
+4. The viewResolver will then go search for `mvc.html` and asks Thymeleaf to render the html with the passed value.
+
+## API
+Returns `JSON`.
+```java
+    @GetMapping("api")
+    @ResponseBody // As in HTTP response body.
+    public User API(@RequestParam("name") String name) {
+        User user = new User();
+        user.setName(name);
+        return user;
+    }
+
+    static class User {
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }   
+```
