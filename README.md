@@ -53,23 +53,29 @@ Split Controller from View so that View can only focus on the view and Controlle
 4. The viewResolver will then go search for `mvc.html` and asks Thymeleaf to render the html with the passed value.
 
 ## API
-Returns `JSON`.
+Returns `JSON`.  This is the most common practice.
 ```java
-    @GetMapping("api")
-    @ResponseBody // As in HTTP response body.
-    public User API(@RequestParam("name") String name) {
-        User user = new User();
-        user.setName(name);
-        return user;
-    }
+@GetMapping("api")
+@ResponseBody // As in HTTP response body.
+public User API(@RequestParam("name") String name) {
+    User user = new User();
+    user.setName(name);
+    return user;
+}
 
-    static class User {
-        private String name;
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
-    }   
+static class User {
+    private String name;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+}   
 ```
+1. Tomcat will let Spring know that there was a request for `localhost:8080/mvc?name=Elliott`.
+2. Spring will search for the mvc controller.
+3. It will see `@ResponseBody` and prepare to respond in the body of HTTP.
+4. If an object is returned, convert it to JSON and return.
+5. Instead of viewResolver, HttpMessageConverter will run.
+NOTE: We probably need to use JSON for HTTP Accept header.
