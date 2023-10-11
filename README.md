@@ -8,7 +8,6 @@
 ## Setup Guide
 - Clone this repository.
 - Open the `build.gradle` file with IntelliJ.
-- If it asks to 
 - Allow IntelliJ a moment to finish its setup.
 - Open the terminal in IntelliJ and execute the following command:
 ```sh
