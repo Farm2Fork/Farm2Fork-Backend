@@ -20,5 +20,3 @@
 - Please create domain-specific packages. For instance, all user-related files should be placed under `src/main/java/com.Farm2Fork.Farm2Fork/User`.
 - As of October 10, 2023, four packages have been created: Order, OrderItem, Product, and User. Don't hesitate to use feature branches liberally. For more information, refer to [this link](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow#:~:text=What%20is%20Gitflow%3F,lived%20branches%20and%20larger%20commits).
 - When creating a feature branch, please name it with the Asana ticket number (e.g., [F2F-xxx]).
-
-## Other Notes
